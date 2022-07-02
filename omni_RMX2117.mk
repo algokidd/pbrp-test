@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# Dynamic
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -25,20 +27,19 @@ $(call inherit-product, vendor/pb/config/common.mk)
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root) \
 	$(LOCAL_PATH)/prebuilt/dtb:dtb.img
 
-## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := RMX2117
-PRODUCT_NAME := omni_RMX2117
-PRODUCT_BRAND := Realme
-PRODUCT_MODEL := Narzo 30 Pro
-PRODUCT_MANUFACTURER := Realme
-
-# Dynamic
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
+    android.hardware.fastboot@1.0-impl-mock.recovery
+
+## Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := RMX2117
+PRODUCT_NAME := omni_RMX2117
+PRODUCT_BRAND := realme
+PRODUCT_MODEL := narzo 30 Pro
+PRODUCT_MANUFACTURER := realme
+
+
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
